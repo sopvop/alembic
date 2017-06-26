@@ -36,6 +36,14 @@
 
 IF( ${MAYA_FOUND} )
 
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU"
+    OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+  #Use version script to clean-up symbols
+  set(VERSION_SCRIPT_ARGS
+       "-Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/mayaplugin.map")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${VERSION_SCRIPT_ARGS}")
+endif()
+
 ADD_SUBDIRECTORY( AbcExport )
 ADD_SUBDIRECTORY( AbcImport )
 
