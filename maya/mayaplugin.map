@@ -1,7 +1,8 @@
 {
-  global:
-    initializePlugin;
-    uninitializePlugin;
-   local:
+    extern "C" {
+      initializePlugin;
+      uninitializePlugin;
+    };
+  local:
     *;
 };
